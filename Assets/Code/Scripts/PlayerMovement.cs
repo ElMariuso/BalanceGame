@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -7,13 +8,15 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float dashForce = 5f;
     
     [Header("Jump")]
     [SerializeField] private float jumpForce = 100f;
     
-    [Header("Actions")]
+    [Header("Action References")]
     [SerializeField] private InputActionReference moveAction;
     [SerializeField] private InputActionReference sprintAction;
+    [SerializeField] private InputActionReference dashAction;
     [SerializeField] private InputActionReference jumpAction;
 
     private Rigidbody rb;
@@ -36,14 +39,20 @@ public class PlayerMovement : MonoBehaviour
     {
         moveAction.action.Enable();
         sprintAction.action.Enable();
+        dashAction.action.Enable();
         jumpAction.action.Enable();
+        
+        dashAction.action.performed += OnDash;
     }
 
     private void OnDisable()
     {
         moveAction.action.Disable();
         sprintAction.action.Disable();
+        dashAction.action.Disable();
         jumpAction.action.Disable();
+        
+        dashAction.action.performed -= OnDash;
     }
 
     // Runtime
@@ -55,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if (moveInput != Vector2.zero) Move();
     }
 
     // Main movement utils functions
@@ -69,5 +78,23 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    }
+
+    private void Dash(Vector2 direction)
+    {
+        Vector3 dashDirection = new Vector3(direction.x, 0, direction.y);
+        Vector3 movement = player.transform.TransformDirection(dashDirection);
+        
+        rb.AddForce(movement * dashForce, ForceMode.Impulse);
+    }
+    
+    // Utils
+    private void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.interaction is MultiTapInteraction)
+        {
+            Vector2 direction = moveInput.normalized;
+            Dash(direction);
+        }
     }
 }
