@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,9 +45,8 @@ public class PlayerStats : MonoBehaviour
     // Finders
     public float GetUncomputedStatValue(StatType type)
     {
-        var stat = stats.FirstOrDefault(s => s.type == type);
-        if (stat != null)
-            return stat.baseValue;
+        var stat = stats.First(s => s.type == type);
+        return stat.baseValue;
 
         Debug.LogError($"Stat of type {type} not found.");
         return -1f;
@@ -54,12 +54,7 @@ public class PlayerStats : MonoBehaviour
 
     public float GetComputedStatValue(StatType type)
     {
-        var stat = stats.FirstOrDefault(s => s.type == type);
-        if (stat == null)
-        {
-            Debug.LogError($"Stat of type {type} not found.");
-            return -1f;
-        }
+        var stat = stats.First(s => s.type == type);
 
         float value = stat.baseValue;
 
