@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
@@ -8,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float dashForce = 5f;
+    [SerializeField] private float dashForce = 20f;
     
     [Header("Jump")]
     [SerializeField] private float jumpForce = 1f;
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
     private float currentSpeed;
     private float sprintSpeed;
+    private bool isDashing = false;
     
     // Setup
     private void Awake()
@@ -59,14 +61,16 @@ public class PlayerMovement : MonoBehaviour
     // Runtime
     private void Update()
     {
+        if (isDashing) return;
+        
         moveInput = moveAction.action.ReadValue<Vector2>();
         currentSpeed = sprintAction.action.IsPressed() ? sprintSpeed : moveSpeed;
     }
 
     private void FixedUpdate()
     {
-        if (moveInput != Vector2.zero) Move();
-        if (jumpAction.action.IsPressed() && IsGrounded()) Jump();
+        if (!isDashing && moveInput != Vector2.zero) Move();
+        if (!isDashing && jumpAction.action.IsPressed() && IsGrounded()) Jump();
     }
 
     // Main movement utils functions
@@ -82,21 +86,28 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
-    private void Dash(Vector2 direction)
+    private IEnumerator Dash(Vector2 direction)
     {
-        Vector3 dashDirection = new Vector3(direction.x, 0, direction.y);
+        isDashing = true;
+        
+        Vector3 dashDirection = new Vector3(direction.x, 0, direction.y).normalized;
         Vector3 movement = player.transform.TransformDirection(dashDirection);
         
-        rb.AddForce(movement * dashForce, ForceMode.Impulse);
+        rb.linearVelocity = Vector3.zero;
+        rb.linearVelocity = movement * dashForce;
+        
+        yield return new WaitForSeconds(0.2f);
+        
+        isDashing = false;
     }
     
     // Utils
     private void OnDash(InputAction.CallbackContext context)
     {
-        if (context.interaction is MultiTapInteraction)
+        if (context.interaction is MultiTapInteraction && !isDashing && moveInput != Vector2.zero)
         {
             Vector2 direction = moveInput.normalized;
-            Dash(direction);
+            StartCoroutine(Dash(direction));
         }
     }
 
