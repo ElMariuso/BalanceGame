@@ -966,13 +966,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1341824487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac69a3bc66892e94bb89c98f4f95af0d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a81b5f7faaa05b40b662ec927e6a70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-  - statName: Health
-    type: 0
-    baseValue: 50
+  - statName: Speed
+    type: 2
+    baseValue: 10
   modifiers: []
 --- !u!1 &1392539057
 GameObject:
@@ -1305,10 +1305,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 699653539}
-  moveSpeed: 5
+  defaultSpeed: 5
   dashForce: 5
   jumpForce: 1
   groundCheckDistance: 0.1
+  stats: {fileID: 1341824489}
   moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   sprintAction: {fileID: -7471211009204490832, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   dashAction: {fileID: 7883048008050750060, guid: 052faaac586de48259a63d0c4782560b, type: 3}

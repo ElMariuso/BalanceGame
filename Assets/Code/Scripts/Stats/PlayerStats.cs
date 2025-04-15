@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 using Stats;
 
@@ -8,6 +9,8 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private List<Stat> stats = new List<Stat>();
     [SerializeField] private List<StatModifierGroup> modifiers = new List<StatModifierGroup>();
+
+    public event Action<StatType> OnStatChanged;
 
     // Adders and removers
     public void AddStat(Stat stat)
@@ -30,6 +33,7 @@ public class PlayerStats : MonoBehaviour
         }
 
         group.modifiers.Add(modifier);
+        OnStatChanged?.Invoke(statType);
     }
 
     public void RemoveStatModifier(StatType statType, StatModifier modifier)
@@ -50,7 +54,7 @@ public class PlayerStats : MonoBehaviour
         if (stat != null)
             return stat.baseValue;
 
-        Debug.LogError($"Stat of type {type} not found.");
+        Debug.LogWarning($"Stat of type {type} not found.");
         return -1f;
     }
 
@@ -59,7 +63,7 @@ public class PlayerStats : MonoBehaviour
         var stat = stats.FirstOrDefault(s => s.type == type);
         if (stat == null)
         {
-            Debug.LogError($"Stat of type {type} not found.");
+            Debug.LogWarning($"Stat of type {type} not found.");
             return -1f;
         }
 
@@ -80,7 +84,6 @@ public class PlayerStats : MonoBehaviour
                 };
             }
         }
-
         return value;
     }
 }

@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
+using Stats;
+
 namespace Controls
 {
     public class PlayerMovement : MonoBehaviour
@@ -10,13 +12,16 @@ namespace Controls
         [SerializeField] private GameObject player;
     
         [Header("Movement")]
-        [SerializeField] private float moveSpeed = 5f;
+        [SerializeField] private float defaultSpeed = 5f;
         [SerializeField] private float dashForce = 5f;
     
         [Header("Jump")]
         [SerializeField] private float jumpForce = 1f;
         [SerializeField] private float groundCheckDistance = 0.1f;
     
+        [Header("Stats")]
+        [SerializeField] private PlayerStats stats;
+        
         [Header("Action References")]
         [SerializeField] private InputActionReference moveAction;
         [SerializeField] private InputActionReference sprintAction;
@@ -35,9 +40,17 @@ namespace Controls
         private void Awake()
         {
             rb = player.GetComponent<Rigidbody>();
-
-            currentSpeed = moveSpeed;
-            sprintSpeed = moveSpeed * 2;
+        }
+        
+        private void Start()
+        {
+            stats.OnStatChanged += HandleStatModified;
+            UpdateSpeedFromStats();
+        }
+        
+        private void OnDestroy()
+        {
+            stats.OnStatChanged -= HandleStatModified;
         }
     
         private void OnEnable()
@@ -66,7 +79,7 @@ namespace Controls
             if (isDashing) return;
         
             moveInput = moveAction.action.ReadValue<Vector2>();
-            currentSpeed = sprintAction.action.IsPressed() ? sprintSpeed : moveSpeed;
+            currentSpeed = sprintAction.action.IsPressed() ? sprintSpeed : currentSpeed;
         }
 
         private void FixedUpdate()
@@ -118,6 +131,33 @@ namespace Controls
         private bool IsGrounded()
         {
             return Physics.Raycast(player.transform.position, Vector3.down, groundCheckDistance);
+        }
+        
+        // Stats Modifications
+        private void HandleStatModified(StatType type)
+        {
+            switch (type)
+            {
+                case StatType.Speed:
+                    UpdateSpeedFromStats();
+                    break;
+            }
+        }
+        
+        private void UpdateSpeedFromStats()
+        {
+            float computedSpeed = stats.GetComputedStatValue(StatType.Speed);
+
+            if (computedSpeed < 0f)
+            {
+                Debug.LogWarning("[PlayerMovement] Speed stat not found, using default values.");
+                currentSpeed = defaultSpeed;
+            }
+            else
+            {
+                currentSpeed = computedSpeed;
+            }
+            sprintSpeed = currentSpeed * 2;
         }
     }
 }
