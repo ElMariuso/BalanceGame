@@ -4,17 +4,8 @@ using System.Linq;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField]
-    private List<Stat> stats = new List<Stat>();
-    
-    [SerializeField]
-    private class StatModifierGroup
-    {
-        public StatType statType;
-        public List<StatModifier> modifiers = new List<StatModifier>();
-    }
-    [SerializeField]
-    private List<StatModifierGroup> modifiers = new List<StatModifierGroup>();
+    [SerializeField] private List<Stat> stats = new List<Stat>();
+    [SerializeField] private List<StatModifierGroup> modifiers = new List<StatModifierGroup>();
 
     // Adders and removers
     public void AddStat(Stat stat)

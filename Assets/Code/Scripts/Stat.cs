@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public enum StatType
 {
     Health,
@@ -7,8 +5,8 @@ public enum StatType
     Speed,
 }
 
-[CreateAssetMenu(fileName = "NewStat", menuName = "Stats/Stat")]
-public class Stat : ScriptableObject
+[System.Serializable]
+public class Stat
 {
     public string statName;
     public StatType type;

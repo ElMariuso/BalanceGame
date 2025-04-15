@@ -970,7 +970,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-  - {fileID: 11400000, guid: f6358e76a59f02f489d14b0ebc78dc56, type: 2}
+  - statName: Health
+    type: 0
+    baseValue: 50
+  modifiers: []
 --- !u!1 &1392539057
 GameObject:
   m_ObjectHideFlags: 0
