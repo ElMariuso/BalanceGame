@@ -78,7 +78,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 inputDirection = new Vector3(moveInput.x, 0, moveInput.y);
         Vector3 movement = player.transform.TransformDirection(inputDirection);
-        rb.linearVelocity = movement * currentSpeed;
+        Vector3 currentVelocity = rb.linearVelocity;
+        
+        rb.linearVelocity = new Vector3(movement.x * currentSpeed, currentVelocity.y, movement.z * currentSpeed);
     }
 
     private void Jump()
