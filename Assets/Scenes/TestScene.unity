@@ -1219,6 +1219,7 @@ GameObject:
   - component: {fileID: 1930271499}
   - component: {fileID: 1930271500}
   - component: {fileID: 1930271501}
+  - component: {fileID: 1930271502}
   m_Layer: 0
   m_Name: PlayerControllers
   m_TagString: Untagged
@@ -1255,7 +1256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 699653539}
   moveSpeed: 5
-  dashForce: 20
+  dashForce: 5
   jumpForce: 1
   groundCheckDistance: 0.1
   moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
@@ -1276,6 +1277,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 330585546}
   bodyTransform: {fileID: 699653540}
+--- !u!114 &1930271502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930271498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c8570c0982ae24fa9a631fcd4766ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  parryAction: {fileID: -943732282291768771, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
