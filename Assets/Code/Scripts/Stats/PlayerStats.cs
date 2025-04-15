@@ -15,36 +15,117 @@ public class PlayerStats : MonoBehaviour
     // Adders and removers
     public void AddStat(Stat stat)
     {
+        if (stat == null)
+        {
+            Debug.LogWarning("Tried to add a null Stat.");
+            return;
+        }
+        
         stats.Add(stat);
     }
 
     public void RemoveStat(StatType statType)
     {
-        stats.RemoveAll(s => s.type == statType);
+        int removedCount = stats.RemoveAll(s => s.type == statType);
+
+        if (removedCount == 0)
+        {
+            Debug.LogWarning($"Tried to remove stat of type {statType}, but it wasn't found.");
+        }
     }
 
-    public void AddStatModifier(StatType statType, StatModifier modifier)
+    public void AddStatModifier(StatModifier modifier)
     {
-        var group = modifiers.FirstOrDefault(g => g.statType == statType);
+        if (modifier == null)
+        {
+            Debug.LogWarning("Tried to add a null StatModifier.");
+            return;
+        }
+        
+        var group = modifiers.FirstOrDefault(g => g.statType == modifier.type);
+        
+        // If the group doesn't exist, create it and add it
         if (group == null)
         {
-            group = new StatModifierGroup { statType = statType };
+            group = new StatModifierGroup { statType = modifier.type };
             modifiers.Add(group);
         }
 
+        // Add the modifier to the group and invoke event
         group.modifiers.Add(modifier);
-        OnStatChanged?.Invoke(statType);
+        OnStatChanged?.Invoke(modifier.type);
     }
 
-    public void RemoveStatModifier(StatType statType, StatModifier modifier)
+    public void RemoveStatModifier(StatModifier modifier)
     {
-        var group = modifiers.FirstOrDefault(g => g.statType == statType);
+        if (modifier == null)
+        {
+            Debug.LogWarning("Tried to remove a null StatModifier.");
+            return;
+        }
+        
+        var group = modifiers.FirstOrDefault(g => g.statType == modifier.type);
+        
         if (group != null)
         {
             group.modifiers.Remove(modifier);
+            
+            // Remove group if empty
             if (group.modifiers.Count == 0)
                 modifiers.Remove(group);
         }
+
+        OnStatChanged?.Invoke(modifier.type); // Invoke event
+    }
+    
+    public void AddStatModifierGroup(StatModifierGroup modifierGroup)
+    {
+        if (modifierGroup == null)
+        {
+            Debug.LogWarning("Tried to add a null StatModifierGroup.");
+            return;
+        }
+
+        if (modifierGroup.modifiers == null || modifierGroup.modifiers.Count == 0)
+        {
+            Debug.LogWarning($"Tried to add empty StatModifierGroup for {modifierGroup.statType}.");
+            return;
+        }
+
+        var group = modifiers.FirstOrDefault(g => g.statType == modifierGroup.statType);
+
+        if (group == null) modifiers.Add(modifierGroup); // If the group doesn't exist, create it and add it
+        else group.modifiers.AddRange(modifierGroup.modifiers); // If not, merge the two lists
+        
+        OnStatChanged?.Invoke(modifierGroup.statType);
+    }
+    
+    public void RemoveStatModifierGroup(StatType statType)
+    {
+        var group = modifiers.FirstOrDefault(g => g.statType == statType);
+
+        if (group != null)
+        {
+            modifiers.Remove(group);
+            OnStatChanged?.Invoke(statType);
+        }
+    }
+    
+    // Getters
+    private Stat GetStat(StatType statType)
+    {
+        return stats.FirstOrDefault(s => s.type == statType);
+    }
+    
+    private StatModifierGroup GetModifierGroup(StatType statType)
+    {
+        return modifiers.FirstOrDefault(g => g.statType == statType);
+    }
+    
+    private StatModifier GetModifier(StatType statType, StatModifier targetModifier)
+    {
+        var group = GetModifierGroup(statType);
+        return group?.modifiers.FirstOrDefault(m => m == targetModifier);
     }
 
     // Finders
