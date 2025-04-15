@@ -11,7 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashForce = 5f;
     
     [Header("Jump")]
-    [SerializeField] private float jumpForce = 100f;
+    [SerializeField] private float jumpForce = 1f;
+    [SerializeField] private float groundCheckDistance = 0.1f;
     
     [Header("Action References")]
     [SerializeField] private InputActionReference moveAction;
@@ -65,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (moveInput != Vector2.zero) Move();
+        if (jumpAction.action.IsPressed() && IsGrounded()) Jump();
     }
 
     // Main movement utils functions
@@ -96,5 +98,10 @@ public class PlayerMovement : MonoBehaviour
             Vector2 direction = moveInput.normalized;
             Dash(direction);
         }
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics.Raycast(player.transform.position, Vector3.down, groundCheckDistance);
     }
 }

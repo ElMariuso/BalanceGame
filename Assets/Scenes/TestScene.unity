@@ -1256,7 +1256,7 @@ MonoBehaviour:
   player: {fileID: 699653539}
   moveSpeed: 5
   dashForce: 5
-  jumpForce: 100
+  jumpForce: 1
   moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   sprintAction: {fileID: -7471211009204490832, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   dashAction: {fileID: 7883048008050750060, guid: 052faaac586de48259a63d0c4782560b, type: 3}
