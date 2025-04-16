@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 1576623510151626765}
   - component: {fileID: 7241285400196141592}
   - component: {fileID: 9213525808431058437}
+  - component: {fileID: 651392754148715844}
   m_Layer: 0
   m_Name: Player Controllers
   m_TagString: Player
@@ -114,7 +115,6 @@ MonoBehaviour:
   dashForce: 5
   jumpForce: 1
   groundCheckDistance: 0.1
-  stats: {fileID: 7329323050451135771}
   moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   sprintAction: {fileID: -7471211009204490832, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   dashAction: {fileID: 7883048008050750060, guid: 052faaac586de48259a63d0c4782560b, type: 3}
@@ -173,6 +173,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901bc730f78c407dab1a3130a42b9020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &651392754148715844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832112256854448386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a86b3df888b46d89482d7498fed83aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 6281533614819008537}
+  interactAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  interactionRadius: 1.5
+  interactionDistance: 2
 --- !u!1 &3246712720589071232
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,6 +687,12 @@ MonoBehaviour:
   stats:
   - statName: Speed
     type: 2
+    baseValue: 10
+  - statName: Speed
+    type: 0
+    baseValue: 10
+  - statName: Speed
+    type: 1
     baseValue: 10
   modifiers: []
 --- !u!1 &9039044555270059586

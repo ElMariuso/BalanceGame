@@ -2360,8 +2360,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1832112256854448386, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 451859945}
   m_SourcePrefab: {fileID: 100100000, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
+--- !u!1 &451859943 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1832112256854448386, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
+  m_PrefabInstance: {fileID: 451859942}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &451859944 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 6281533614819008537, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
+  m_PrefabInstance: {fileID: 451859942}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &451859945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451859943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a86b3df888b46d89482d7498fed83aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 451859944}
+  interactAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  interactionRadius: 1.5
+  interactionDistance: 2
 --- !u!1001 &452973050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8169,7 +8198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 199779887528897996, guid: 0e91339c419d30443890533f32f67332, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.463
+      value: -1.941
       objectReference: {fileID: 0}
     - target: {fileID: 199779887528897996, guid: 0e91339c419d30443890533f32f67332, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8199,6 +8228,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2957780656602997438, guid: 0e91339c419d30443890533f32f67332, type: 3}
+      propertyPath: interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094074777697650441, guid: 0e91339c419d30443890533f32f67332, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7851375962876947491, guid: 0e91339c419d30443890533f32f67332, type: 3}
       propertyPath: m_Name
       value: Cube (2)
@@ -8206,7 +8243,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7851375962876947491, guid: 0e91339c419d30443890533f32f67332, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9209996722112452356}
   m_SourcePrefab: {fileID: 100100000, guid: 0e91339c419d30443890533f32f67332, type: 3}
 --- !u!1001 &7031014246200806892
 PrefabInstance:
@@ -8265,6 +8305,38 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0a0ed9ec944ddd4c882b3fee11598db, type: 3}
+--- !u!1 &9209996722112452355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7851375962876947491, guid: 0e91339c419d30443890533f32f67332, type: 3}
+  m_PrefabInstance: {fileID: 4019069370459537523}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &9209996722112452356
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9209996722112452355}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
