@@ -7,8 +7,8 @@ namespace Effects
 {
     public abstract class DotEffect : Effect
     {
-        public float Duration;
-        public float Rate;
+        public float duration;
+        public float rate;
         
         public override void Apply(PlayerStats playerStats)
         {
@@ -18,11 +18,11 @@ namespace Effects
         public virtual IEnumerator DotEffectCoroutine(PlayerStats stats, Action onDot = null)
         {
             var t = 0f;
-            while (t <= Duration)
+            while (t < duration)
             {
-                yield return new WaitForSeconds(Rate);
+                yield return new WaitForSeconds(rate);
                 onDot?.Invoke();
-                t += Rate;
+                t += rate;
             }
         }
     }

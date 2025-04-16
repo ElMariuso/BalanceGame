@@ -7,7 +7,7 @@ namespace Effects
 {
     public class TimeoutEffect : Effect
     {
-        public float Timeout;
+        public float timeout;
 
         public override void Apply(PlayerStats playerStats)
         {
@@ -16,7 +16,7 @@ namespace Effects
 
         public virtual IEnumerator TimeoutEffectCoroutine(PlayerStats stats, Action onTimeout = null)
         {
-            yield return new WaitForSeconds(Timeout);
+            yield return new WaitForSeconds(timeout);
             onTimeout?.Invoke();
         }
     }

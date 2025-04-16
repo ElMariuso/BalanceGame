@@ -1,16 +1,10 @@
 using Stats;
+using UnityEngine;
 
 namespace Effects
 {
-    public abstract class Effect
+    public abstract class Effect : ScriptableObject
     {
-        public EffectType Type;
-
         public virtual void Apply(PlayerStats playerStats) { }
-    }
-
-    public enum EffectType
-    {
-        Instant, Dot, Timeout
     }
 }

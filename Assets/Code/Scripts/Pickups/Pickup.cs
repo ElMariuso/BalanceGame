@@ -2,24 +2,38 @@ using System;
 using Effects;
 using Effects.Impl;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Pickups
 {
     public class Pickup : MonoBehaviour
     {
-        private Effect effect;
+        public Effect effect;
+        public bool destroyOnPickup;
         
-        private void Start()
+        protected UnityAction OnPickup;
+
+        private void OnEnable()
         {
-            // effect = new InstantHealthEffect() { Health = 50 };
-            effect = new DotHealthEffect() { Health = 50, Duration = 5, Rate = 0.5f };
+            OnPickup += PickedUp;
+        }
+
+        private void OnDisable()
+        {
+            OnPickup -= PickedUp;
         }
         
+        private void PickedUp()
+        {
+            if(destroyOnPickup) Destroy(gameObject);
+        }
+
         public void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
                 Player.Instance.effects.ApplyEffect(effect);
+                OnPickup?.Invoke();
             }
         }
     }

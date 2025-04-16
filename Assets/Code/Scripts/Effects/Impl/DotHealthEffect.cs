@@ -4,9 +4,10 @@ using Utils;
 
 namespace Effects.Impl
 {
+    [CreateAssetMenu(menuName = "Effects/DotHealth", fileName = "DotHealthEffect")]
     public class DotHealthEffect : DotEffect
     {
-        public float Health;
+        public float health;
 
         public override void Apply(PlayerStats playerStats)
         {
@@ -15,8 +16,8 @@ namespace Effects.Impl
 
         private void OnDotAction()
         {
-            Player.Instance.health.Heal(Health);
-            Debug.Log($"[DOT] Added {Health} HP.");
+            Player.Instance.health.Heal(health);
+            Debug.Log($"[DOT] Added {health} HP.");
         }
     }
 }
