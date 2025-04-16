@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54784f9a8b5144de81efd22907d9b25a, type: 3}
   m_Name: Minor Health Boost
   m_EditorClassIdentifier: 
-  modifier: {fileID: 0}
+  modifier: {fileID: 11400000, guid: f9c1351341076ed4da3b60c69bc3e87f, type: 2}
