@@ -18,9 +18,6 @@ namespace Controls
         [Header("Jump")]
         [SerializeField] private float jumpForce = 1f;
         [SerializeField] private float groundCheckDistance = 0.1f;
-    
-        [Header("Stats")]
-        [SerializeField] private PlayerStats stats;
         
         [Header("Action References")]
         [SerializeField] private InputActionReference moveAction;
@@ -44,13 +41,13 @@ namespace Controls
         
         private void Start()
         {
-            stats.OnStatChanged += HandleStatModified;
+            Player.Instance.stats.OnStatChanged += HandleStatModified;
             UpdateSpeedFromStats();
         }
         
         private void OnDestroy()
         {
-            stats.OnStatChanged -= HandleStatModified;
+            Player.Instance.stats.OnStatChanged -= HandleStatModified;
         }
     
         private void OnEnable()
@@ -146,7 +143,7 @@ namespace Controls
         
         private void UpdateSpeedFromStats()
         {
-            float computedSpeed = stats.GetComputedStatValue(StatType.Speed);
+            float computedSpeed = Player.Instance.stats.GetComputedStatValue(StatType.Speed);
 
             if (computedSpeed < 0f)
             {
