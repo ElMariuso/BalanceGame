@@ -14,7 +14,7 @@ namespace Effects.Impl
 
         private void OnTimeout()
         {
-            // TODO: Add Health to player
+            Player.Instance.health.Heal(Health);
             Debug.Log($"[Timeout] Added {Health} HP.");
         }
     }

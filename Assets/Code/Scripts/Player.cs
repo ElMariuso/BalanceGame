@@ -1,3 +1,4 @@
+using Controls;
 using Effects;
 using Stats;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class Player : MonoBehaviour
 
     public PlayerStats stats;
     public PlayerEffectsController effects;
+    public PlayerHealthController health;
     
     private void Awake()
     {

@@ -15,7 +15,7 @@ namespace Effects.Impl
 
         private void OnDotAction()
         {
-            // TODO: Add health to the player
+            Player.Instance.health.Heal(Health);
             Debug.Log($"[DOT] Added {Health} HP.");
         }
     }
