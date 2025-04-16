@@ -486,7 +486,7 @@ MonoBehaviour:
   stats: {fileID: 1855481327344870911}
   effects: {fileID: 1310512575796801542}
   health: {fileID: 8451236967279742282}
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 5791744398049365895}
 --- !u!1 &6637616324941285152
 GameObject:
   m_ObjectHideFlags: 0
