@@ -65,8 +65,8 @@ namespace Controls
             interactable = null;
             highlightable = null;
 
-            if (Physics.Raycast(Player.Instance.playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f)),
-                    out var hit, interactionDistance))
+            if (Physics.SphereCast(Player.Instance.playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f)),
+                    interactionRadius, out var hit, interactionDistance))
             {
                 interactable = hit.collider.GetComponentInChildren<IInteractable>();
                 highlightable = hit.collider.GetComponentInChildren<IHighlightable>();
