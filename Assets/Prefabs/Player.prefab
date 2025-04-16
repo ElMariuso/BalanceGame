@@ -270,6 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4123961757541523253}
   weaponData: {fileID: 11400000, guid: 2b5d3f8d984d9764a81601e9180edf1a, type: 2}
+  hitbox: {fileID: 0}
 --- !u!1 &5296657599664543728
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  interactionRadius: 1.5
+  interactionRadius: 0.1
   interactionDistance: 2
 --- !u!1 &6703474415157398041
 GameObject:
