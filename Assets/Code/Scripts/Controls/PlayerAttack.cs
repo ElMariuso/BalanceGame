@@ -9,6 +9,9 @@ namespace Controls
         [SerializeField] private InputActionReference attackAction;
         [SerializeField] private InputActionReference parryAction;
 
+        [Header("Tools")]
+        [SerializeField] private MeleeWeapon weapon;
+
         private void OnEnable()
         {
             attackAction.action.Enable();
@@ -34,7 +37,7 @@ namespace Controls
     
         private void HandleAttack()
         {
-            Debug.Log("YAARRR");
+            weapon.HandleAttack();
         }
 
         private void OnParryPerformed(InputAction.CallbackContext context)
