@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public PlayerStats stats;
     public PlayerEffectsController effects;
     public PlayerHealthController health;
+    public Camera playerCamera;
     
     private void Awake()
     {
