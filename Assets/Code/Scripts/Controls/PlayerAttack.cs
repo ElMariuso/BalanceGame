@@ -10,7 +10,7 @@ namespace Controls
         [SerializeField] private InputActionReference parryAction;
 
         [Header("Tools")]
-        [SerializeField] private MeleeWeapon weapon;
+        [SerializeField] private Weapons.Weapon weapon;
 
         private void OnEnable()
         {
