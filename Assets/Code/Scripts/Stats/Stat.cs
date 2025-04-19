@@ -5,6 +5,7 @@ namespace Stats
         Health,
         Stamina,
         Speed,
+        Strength,
     }
 
     [System.Serializable]

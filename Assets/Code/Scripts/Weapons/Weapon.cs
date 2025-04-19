@@ -12,11 +12,12 @@ namespace Weapons
             if (animator == null) animator = GetComponent<Animator>();
         }
     
-        public abstract void HandleAttack();
+        public abstract void HandleAttack(float attackStat);
+        protected abstract int DealDamage();
 
-        protected virtual void DealDamage()
+        public WeaponData GetWeaponData()
         {
-            Debug.Log("DealDamage " + weaponData.damage);
+            return weaponData;
         }
     }
 }

@@ -1,5 +1,7 @@
+using Stats;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Weapons;
 
 namespace Controls
 {
@@ -10,7 +12,7 @@ namespace Controls
         [SerializeField] private InputActionReference parryAction;
 
         [Header("Tools")]
-        [SerializeField] private Weapons.Weapon weapon;
+        [SerializeField] private Weapon weapon;
 
         private void OnEnable()
         {
@@ -32,20 +34,15 @@ namespace Controls
     
         private void OnAttackPerformed(InputAction.CallbackContext context)
         {
-            HandleAttack();
-        }
-    
-        private void HandleAttack()
-        {
-            weapon.HandleAttack();
+            float attackStat = weapon.GetWeaponData().weaponClass switch
+            {
+                WeaponClass.Melee => Player.Instance.stats.GetComputedStatValue(StatType.Strength),
+                _ => 1f
+            };
+            weapon.HandleAttack(attackStat);
         }
 
         private void OnParryPerformed(InputAction.CallbackContext context)
-        {
-            HandleParry();
-        }
-
-        private void HandleParry()
         {
             Debug.Log("PARRY");
         }

@@ -6,15 +6,42 @@ namespace Weapons
     {
         [SerializeField] private Collider hitbox;
         
-        public override void HandleAttack()
+        private float strength;
+
+        private void Awake()
         {
-            animator.SetTrigger("Attack");
-            DealDamage();
+            hitbox.enabled = false; // Be sure the hitbox is disabled by default
         }
         
-        protected override void DealDamage()
+        public override void HandleAttack(float attackStat)
         {
-            base.DealDamage();
+            strength = attackStat;
+            
+            animator.SetTrigger(weaponData.animationTrigger);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Enemy") || other.CompareTag("Player"))
+            {
+                Debug.Log("ATTACK");
+                DealDamage();
+            }
+        }
+        
+        protected override int DealDamage()
+        {
+            float strengthValue = Mathf.Max(strength, 1f);
+            float weaponDamage = Mathf.Max(weaponData.damage, 1f);
+            float weaponMass = Mathf.Max(weaponData.mass, 1f);
+
+            return (int)(weaponDamage * (strengthValue / weaponMass) + 0.4f);
+        }
+
+        // Animation event
+        public void HandleWeaponCollider(int isEnabled)
+        {
+            hitbox.enabled = (isEnabled == 1);
         }
     }
 }

@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: DebugSword
   m_EditorClassIdentifier: 
   weaponName: DebugSword
+  weaponClass: 0
   damage: 10
-  animationTrigger: 
+  mass: 2.8
+  animationTrigger: Attack
