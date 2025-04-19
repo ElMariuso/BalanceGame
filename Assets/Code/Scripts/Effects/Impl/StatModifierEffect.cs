@@ -8,7 +8,7 @@ namespace Effects.Impl
     {
         public StatModifier modifier;
         
-        public override void Apply(PlayerStats playerStats)
+        public override void Apply(CharacterStats playerStats)
         {
             playerStats.AddStatModifier(modifier);
             Debug.Log($"[Instant] Added modifier {modifier}");

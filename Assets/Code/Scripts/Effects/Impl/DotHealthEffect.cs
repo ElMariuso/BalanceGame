@@ -9,7 +9,7 @@ namespace Effects.Impl
     {
         public float health;
 
-        public override void Apply(PlayerStats playerStats)
+        public override void Apply(CharacterStats playerStats)
         {
             StaticCoroutine.Start(DotEffectCoroutine(playerStats, OnDotAction));
         }

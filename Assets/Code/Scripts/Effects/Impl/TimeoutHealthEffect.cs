@@ -8,7 +8,7 @@ namespace Effects.Impl
     public class TimeoutHealthEffect : TimeoutEffect
     {
         public float health;
-        public override void Apply(PlayerStats playerStats)
+        public override void Apply(CharacterStats playerStats)
         {
             StaticCoroutine.Start(TimeoutEffectCoroutine(playerStats, OnTimeout));
         }

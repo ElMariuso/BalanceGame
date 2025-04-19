@@ -5,7 +5,7 @@ namespace Effects
 {
     public abstract class InstantEffect : Effect
     {
-        public override void Apply(PlayerStats playerStats)
+        public override void Apply(CharacterStats playerStats)
         {
             Debug.Log("Instant effect");
         }

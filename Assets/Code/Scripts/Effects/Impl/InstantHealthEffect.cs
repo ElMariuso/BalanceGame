@@ -8,7 +8,7 @@ namespace Effects.Impl
     {
         public float health;
 
-        public override void Apply(PlayerStats playerStats)
+        public override void Apply(CharacterStats playerStats)
         {
             Player.Instance.health.Heal(health);
             Debug.Log($"[Instant] Added {health} HP");

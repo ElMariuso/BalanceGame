@@ -7,9 +7,9 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;
 
-    public PlayerStats stats;
+    public CharacterStats stats;
     public PlayerEffectsController effects;
-    public PlayerHealthController health;
+    public HealthController health;
     public Camera playerCamera;
     
     private void Awake()

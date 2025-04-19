@@ -5,6 +5,6 @@ namespace Effects
 {
     public abstract class Effect : ScriptableObject
     {
-        public virtual void Apply(PlayerStats playerStats) { }
+        public virtual void Apply(CharacterStats playerStats) { }
     }
 }

@@ -9,12 +9,12 @@ namespace Effects
     {
         public float timeout;
 
-        public override void Apply(PlayerStats playerStats)
+        public override void Apply(CharacterStats playerStats)
         {
             Debug.Log("Timeout effect");
         }
 
-        public virtual IEnumerator TimeoutEffectCoroutine(PlayerStats stats, Action onTimeout = null)
+        public virtual IEnumerator TimeoutEffectCoroutine(CharacterStats stats, Action onTimeout = null)
         {
             yield return new WaitForSeconds(timeout);
             onTimeout?.Invoke();

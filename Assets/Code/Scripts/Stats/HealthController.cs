@@ -1,10 +1,8 @@
-using System;
-using Stats;
 using UnityEngine;
 
-namespace Controls
+namespace Stats
 {
-    public class PlayerHealthController : MonoBehaviour
+    public class HealthController : MonoBehaviour
     {
         public float maxHealth;
         public float currentHealth;
