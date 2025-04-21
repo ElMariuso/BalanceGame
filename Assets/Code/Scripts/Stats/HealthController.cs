@@ -6,35 +6,48 @@ namespace Stats
     {
         public float maxHealth;
         public float currentHealth;
+
+        private CharacterStats stats;
         
         private void Start()
         {
-            maxHealth = Player.Instance.stats.GetComputedStatValue(StatType.Health);
-            currentHealth = maxHealth;
-            Debug.Log($"Player health: {currentHealth}/{maxHealth}");
+            stats = transform.parent.GetComponentInChildren<CharacterStats>();
             
-            Player.Instance.stats.OnStatChanged += OnStatChange;
+            maxHealth = stats.GetComputedStatValue(StatType.Health);
+            currentHealth = maxHealth;
+            Debug.Log($"{transform.parent.name} Health: {currentHealth}/{maxHealth}");
+            
+            stats.OnStatChanged += OnStatChange;
         }
 
         private void OnDestroy()
         {
-            Player.Instance.stats.OnStatChanged -= OnStatChange;
+            if (stats != null) stats.OnStatChanged -= OnStatChange;
         }
 
         private void OnStatChange(StatType type)
         {
             if (type != StatType.Health) return;
-            maxHealth = Player.Instance.stats.GetComputedStatValue(StatType.Health);
             
-            Debug.Log($"Player health: {currentHealth}/{maxHealth}");
+            maxHealth = stats.GetComputedStatValue(StatType.Health);
+            Debug.Log($"{transform.parent.name} Health: {currentHealth}/{maxHealth}");
         }
 
-        public void Heal(float amount)
+        public void ChangeHealth(float amount)
         {
             currentHealth += amount;
             if (currentHealth > maxHealth) currentHealth = maxHealth;
             
-            Debug.Log($"Player health: {currentHealth}/{maxHealth}");
+            Debug.Log($"Amount: {amount}");
+            Debug.Log($"{transform.parent.name} Health: {currentHealth}/{maxHealth}");
+            
+            if (currentHealth <= 0)
+                Die();
+        }
+        
+        private void Die()
+        {
+            Debug.Log($"{transform.parent.name} died.");
         }
     }
 }

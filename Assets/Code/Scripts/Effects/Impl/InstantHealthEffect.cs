@@ -10,7 +10,7 @@ namespace Effects.Impl
 
         public override void Apply(CharacterStats playerStats)
         {
-            Player.Instance.health.Heal(health);
+            Player.Instance.health.ChangeHealth(health);
             Debug.Log($"[Instant] Added {health} HP");
         }
     }

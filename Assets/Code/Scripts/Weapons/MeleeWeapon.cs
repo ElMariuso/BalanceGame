@@ -1,3 +1,4 @@
+using Stats;
 using UnityEngine;
 
 namespace Weapons
@@ -24,8 +25,7 @@ namespace Weapons
         {
             if (other.CompareTag("Enemy") || other.CompareTag("Player"))
             {
-                Debug.Log("ATTACK");
-                DealDamage();
+                other.GetComponentInParent<Enemy>().health.ChangeHealth(-DealDamage());
             }
         }
         
