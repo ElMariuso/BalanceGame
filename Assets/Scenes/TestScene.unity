@@ -321,11 +321,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 1096973710}
   health: {fileID: 1172858155}
---- !u!136 &568160174 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 2778340579715906608, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
-  m_PrefabInstance: {fileID: 1415289790102422039}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &678215455
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,46 +957,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1855481327344870911, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
-      propertyPath: stats.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855481327344870911, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
-      propertyPath: stats.Array.data[3].type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855481327344870911, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
-      propertyPath: stats.Array.data[4].type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855481327344870911, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
-      propertyPath: stats.Array.data[1].statName
-      value: Health
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855481327344870911, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
-      propertyPath: stats.Array.data[2].statName
-      value: Stamina
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855481327344870911, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
-      propertyPath: stats.Array.data[3].statName
-      value: Speed
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855481327344870911, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
-      propertyPath: stats.Array.data[4].statName
-      value: Strength
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855481327344870911, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
-      propertyPath: stats.Array.data[3].baseValue
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855481327344870911, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
-      propertyPath: stats.Array.data[4].baseValue
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2778340579715906608, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5862409925966273033, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1045,14 +1000,6 @@ PrefabInstance:
     - target: {fileID: 6886665297094734342, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7324157172731812855, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
-      propertyPath: hitbox
-      value: 
-      objectReference: {fileID: 568160174}
-    - target: {fileID: 7324157172731812855, guid: 7fa33355f0a43de4f9f34658be835480, type: 3}
-      propertyPath: constant
-      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
