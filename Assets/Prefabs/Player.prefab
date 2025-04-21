@@ -199,7 +199,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4123961757541523253}
   weaponData: {fileID: 11400000, guid: 2b5d3f8d984d9764a81601e9180edf1a, type: 2}
-  hitbox: {fileID: 0}
+  hitbox: {fileID: 2778340579715906608}
 --- !u!1 &5296657599664543728
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,11 +319,17 @@ MonoBehaviour:
   - statName: Speed
     type: 2
     baseValue: 5
-  - statName: Speed
+  - statName: Health
     type: 0
     baseValue: 10
-  - statName: Speed
+  - statName: Stamina
     type: 1
+    baseValue: 10
+  - statName: Speed
+    type: 2
+    baseValue: 5
+  - statName: Strength
+    type: 3
     baseValue: 10
   modifiers: []
 --- !u!1 &5446907573734421427
